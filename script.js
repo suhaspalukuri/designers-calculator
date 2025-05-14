@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu(); // Add mobile hamburger menu
     
     // Set Golden Ratio as the default active tab
-    const goldenRatioTab = document.querySelector('.tab-btn[data-tab="golden-ratio"]');
+    const goldenRatioTab = document.querySelector('.tab-btn[data-tab="modular-scale"]');
     if (goldenRatioTab) {
         // Trigger a click on the Golden Ratio tab
         goldenRatioTab.click();
