@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Designer's Calculator</h1>
+    </header>
+
+    <main>
+        <nav class="tabs" role="tablist">
+            <button class="tab-btn active" data-tab="golden-ratio" role="tab" aria-selected="true">Golden Ratio</button>
+            <button class="tab-btn" data-tab="modular-scale" role="tab" aria-selected="false">Modular Scale</button>
+            <button class="tab-btn" data-tab="aspect-ratio" role="tab" aria-selected="false">Aspect Ratio</button>
+            <button class="tab-btn" data-tab="spacing-grid" role="tab" aria-selected="false">Spacing Grid</button>
+            <button class="tab-btn" data-tab="unit-converter" role="tab" aria-selected="false">Units Convertor</button>
+            <button class="tab-btn" data-tab="contrast-checker" role="tab" aria-selected="false">Cont. Checker</button>
+        </nav>
+
+        <div class="calculator-container">
+            <!-- Golden Ratio Calculator -->
+            <section id="golden-ratio" class="calculator active" role="tabpanel">
+                <h2>Golden Ratio Calculator</h2>
+                <div class="input-group">
+                    <label for="golden-ratio-input">Enter a value (px):</label>
+                    <input type="number" id="golden-ratio-input" min="1" value="100">
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span>Larger value:</span>
+                        <span id="golden-larger">161.8</span>
+                        <button class="copy-btn" data-copy="golden-larger" aria-label="Copy larger value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>Smaller value:</span>
+                        <span id="golden-smaller">61.8</span>
+                        <button class="copy-btn" data-copy="golden-smaller" aria-label="Copy smaller value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modular Scale Calculator -->
+            <section id="modular-scale" class="calculator" role="tabpanel">
+                <h2>Modular Scale Calculator</h2>
+                <div class="input-group">
+                    <label for="base-size">Base font size (px):</label>
+                    <input type="number" id="base-size" min="1" value="16">
+                </div>
+                <div class="input-group">
+                    <label for="scale-ratio">Scale ratio:</label>
+                    <select id="scale-ratio">
+                        <option value="1.2">Minor Third (1.2)</option>
+                        <option value="1.25">Major Third (1.25)</option>
+                        <option value="1.333">Perfect Fourth (1.333)</option>
+                        <option value="1.414">Augmented Fourth (1.414)</option>
+                        <option value="1.5">Perfect Fifth (1.5)</option>
+                        <option value="1.618" selected>Golden Ratio (1.618)</option>
+                    </select>
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span>H1:</span>
+                        <span id="h1-size">67.77px (4.24rem)</span>
+                        <button class="copy-btn" data-copy="h1-size" aria-label="Copy H1 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>H2:</span>
+                        <span id="h2-size">41.89px (2.62rem)</span>
+                        <button class="copy-btn" data-copy="h2-size" aria-label="Copy H2 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>H3:</span>
+                        <span id="h3-size">25.89px (1.62rem)</span>
+                        <button class="copy-btn" data-copy="h3-size" aria-label="Copy H3 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>H4:</span>
+                        <span id="h4-size">16px (1rem)</span>
+                        <button class="copy-btn" data-copy="h4-size" aria-label="Copy H4 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>H5:</span>
+                        <span id="h5-size">9.89px (0.62rem)</span>
+                        <button class="copy-btn" data-copy="h5-size" aria-label="Copy H5 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>H6:</span>
+                        <span id="h6-size">6.11px (0.38rem)</span>
+                        <button class="copy-btn" data-copy="h6-size" aria-label="Copy H6 size">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="download-scale" class="download-btn">
+                    <i class="fas fa-download"></i> Download Scale
+                </button>
+            </section>
+
+            <!-- Aspect Ratio Calculator -->
+            <section id="aspect-ratio" class="calculator" role="tabpanel">
+                <h2>Aspect Ratio Calculator</h2>
+                <div class="input-group">
+                    <label for="ratio-preset">Common ratios:</label>
+                    <select id="ratio-preset">
+                        <option value="custom">Custom</option>
+                        <option value="16:9">16:9 (Widescreen)</option>
+                        <option value="4:3">4:3 (Standard)</option>
+                        <option value="1:1">1:1 (Square)</option>
+                        <option value="3:2">3:2 (Classic Photo)</option>
+                        <option value="2:1">2:1 (Univisium)</option>
+                    </select>
+                </div>
+                <div class="ratio-inputs">
+                    <div class="input-group">
+                        <label for="ratio-width">Width:</label>
+                        <input type="number" id="ratio-width" min="1" value="16">
+                    </div>
+                    <div class="input-group">
+                        <label for="ratio-height">Height:</label>
+                        <input type="number" id="ratio-height" min="1" value="9">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="ratio-target">Calculate by:</label>
+                    <select id="ratio-target">
+                        <option value="width">Width</option>
+                        <option value="height">Height</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="ratio-value">Value (px):</label>
+                    <input type="number" id="ratio-value" min="1" value="1920">
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span>Width:</span>
+                        <span id="ratio-result-width">1920px</span>
+                        <button class="copy-btn" data-copy="ratio-result-width" aria-label="Copy width">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>Height:</span>
+                        <span id="ratio-result-height">1080px</span>
+                        <button class="copy-btn" data-copy="ratio-result-height" aria-label="Copy height">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ratio-preview" id="ratio-preview"></div>
+            </section>
+
+            <!-- Spacing/Grid Calculator -->
+            <section id="spacing-grid" class="calculator" role="tabpanel">
+                <h2>Spacing & Grid Calculator</h2>
+                <div class="input-group">
+                    <label for="grid-base">Base unit (px):</label>
+                    <input type="number" id="grid-base" min="1" value="8">
+                </div>
+                <div class="input-group">
+                    <label for="grid-columns">Number of columns:</label>
+                    <input type="number" id="grid-columns" min="1" max="12" value="12">
+                </div>
+                <div class="input-group">
+                    <label for="grid-gutter">Gutter width (base units):</label>
+                    <input type="range" id="grid-gutter" min="1" max="4" value="2">
+                    <span id="grid-gutter-value">2 units (16px)</span>
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span>Base unit:</span>
+                        <span id="grid-base-result">8px (0.5rem)</span>
+                        <button class="copy-btn" data-copy="grid-base-result" aria-label="Copy base unit">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>Gutter width:</span>
+                        <span id="grid-gutter-result">16px (1rem)</span>
+                        <button class="copy-btn" data-copy="grid-gutter-result" aria-label="Copy gutter width">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid-visual" id="grid-visual"></div>
+            </section>
+
+            <!-- Unit Converter -->
+            <section id="unit-converter" class="calculator" role="tabpanel">
+                <h2>Unit Converter</h2>
+                <div class="input-group">
+                    <label for="base-font-size">Base font size (px):</label>
+                    <input type="number" id="base-font-size" min="1" value="16">
+                </div>
+                <div class="input-group">
+                    <label for="px-value">Pixel value:</label>
+                    <input type="number" id="px-value" min="0" value="16">
+                </div>
+                <div class="results">
+                    <div class="result-item">
+                        <span>rem:</span>
+                        <span id="rem-result">1rem</span>
+                        <button class="copy-btn" data-copy="rem-result" aria-label="Copy rem value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>em:</span>
+                        <span id="em-result">1em</span>
+                        <button class="copy-btn" data-copy="em-result" aria-label="Copy em value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>pt:</span>
+                        <span id="pt-result">12pt</span>
+                        <button class="copy-btn" data-copy="pt-result" aria-label="Copy pt value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="result-item">
+                        <span>per:</span>
+                        <span id="per-result">100%</span>
+                        <button class="copy-btn" data-copy="per-result" aria-label="Copy per value">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contrast Checker -->
+            <section id="contrast-checker" class="calculator" role="tabpanel">
+                <h2>Color Contrast Checker</h2>
+                <div class="color-inputs">
+                    <div class="input-group">
+                        <label for="text-color">Text Color</label>
+                        <div class="color-picker-wrapper">
+                            <div class="color-swatch" id="text-color-swatch"></div>
+                            <span class="color-value" id="text-color-value">#000000</span>
+                            <input type="color" id="text-color" value="#000000">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="bg-color">Background Color</label>
+                        <div class="color-picker-wrapper">
+                            <div class="color-swatch" id="bg-color-swatch"></div>
+                            <span class="color-value" id="bg-color-value">#FFFFFF</span>
+                            <input type="color" id="bg-color" value="#FFFFFF">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contrast-preview">
+                    <div class="contrast-sample" id="contrast-sample">
+                        <div class="contrast-sample-text">
+                            <h3>Designed by The Half Idea</h3>
+                            <p>The Half Idea – Design Studio and Community is a creative space where artists, designers, and thinkers come together to explore and build bold ideas from scratch. It's not just a studio; it's a supportive hub that blends design, collaboration, and community spirit.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results contrast-results">
+                    <div class="result-item">
+                        <span>Contrast ratio:</span>
+                        <span id="contrast-ratio-value">21:1</span>
+                        <button class="copy-btn" data-copy="contrast-ratio-value" aria-label="Copy contrast ratio">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="wcag-results">
+                        <div class="wcag-item">
+                            <div class="wcag-label">
+                                <span>WCAG AA</span>
+                                <span class="wcag-description">Normal text (4.5:1)</span>
+                            </div>
+                            <span id="wcag-aa" class="pass">Pass</span>
+                        </div>
+                        <div class="wcag-item">
+                            <div class="wcag-label">
+                                <span>WCAG AAA</span>
+                                <span class="wcag-description">Enhanced contrast (7:1)</span>
+                            </div>
+                            <span id="wcag-aaa" class="pass">Pass</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;2025 <a href="https://discord.com/invite/Ef4JST9S2E" target="_blank">The Half Idea</a>. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
